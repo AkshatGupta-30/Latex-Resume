@@ -1,10 +1,32 @@
+% fonts.tex
 \usepackage{fontspec}
 
-\setmainfont[
+% Rubik font
+\newfontfamily\rubik[
   Path = fonts/Rubik/static/,
-  Extension = .ttf,
+  Extension=.ttf,
   UprightFont = Rubik-Regular,
   BoldFont = Rubik-Bold,
   ItalicFont = Rubik-Italic,
   BoldItalicFont = Rubik-BoldItalic
 ]{Rubik}
+
+% Josefin Sans font
+\newfontfamily\josefinsans[
+  Path = fonts/Josefin_Sans/static/,
+  Extension=.ttf,
+  UprightFont = JosefinSans-Regular,
+  BoldFont = JosefinSans-Bold,
+  ItalicFont = JosefinSans-Italic,
+  BoldItalicFont = JosefinSans-BoldItalic
+]{Josefin Sans}
+
+% Roboto Slab font
+\newfontfamily\robotoslab[
+  Path = fonts/Roboto_Slab/static/,
+  Extension=.ttf,
+  UprightFont = RobotoSlab-Regular,
+  BoldFont = RobotoSlab-Bold,
+  ItalicFont = RobotoSlab-Regular,
+  BoldItalicFont = RobotoSlab-Bold
+]{Roboto Slab}

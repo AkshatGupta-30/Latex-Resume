@@ -2,10 +2,20 @@
 \usepackage[margin=1.2cm]{geometry}
 \input{fonts}
 
+\newenvironment{heading}
+    {\noindent\begin{minipage}[t]{\textwidth}}
+    {\end{minipage}}
+
 \begin{document}
 
 \begin{heading}
-    \rubik{\fontsize{30}{22}\selectfont \textbf{Akshat Gupta}}\\
+    \begin{minipage}[t]{0.1\textwidth}
+        \rubik{\fontsize{30}{22}\selectfont \textbf{Akshat Gupta}}\\
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.1\textwidth}
+        Photograph
+    \end{minipage}
 \end{heading}
 
 \end{document}

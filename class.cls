@@ -137,3 +137,19 @@
         \makeatother
     \end{itemize}
 }
+
+\newcommand{\skilllist}[2]{
+    \begin{minipage}[t]{#1}
+        \begin{itemize}
+        \foreach \x in {#2} {
+            \item[] \x
+        }
+        \end{itemize}
+    \end{minipage}
+}
+
+\newcommand{\skillsection}[2]{
+    \skilllist{2cm}{#1}
+    \hfill
+    \skilllist{3cm}{#2}
+}

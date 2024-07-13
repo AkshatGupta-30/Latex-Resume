@@ -1,30 +1,15 @@
-\newif\if@normalphoto
-
 \LoadClass{extarticle}
 
 \RequirePackage{accsupp}
 \RequirePackage[margin=2cm]{geometry}
 \RequirePackage[fixed]{fontawesome5}
-\RequirePackage{ifxetex,ifluatex}
-
-
 \RequirePackage{fontspec}
-
-
 \RequirePackage{xcolor}
 
-%* Colourful
-% \colorlet{accent}{blue!70!black} 
-% \colorlet{emphasis}{black}
-% \colorlet{heading}{black}
-% \colorlet{headingrule}{black}
-% \colorlet{subheading}{emphasis}
-% \colorlet{body}{black!80!white}
-% \colorlet{name}{heading}
-% \colorlet{tagline}{accent}
-%*
+\RequirePackage{tikz}
+\RequirePackage[skins]{tcolorbox}
 
-%* Black And White
+
 \colorlet{accent}{black}
 \colorlet{emphasis}{black}
 \colorlet{heading}{black}
@@ -33,15 +18,8 @@
 \colorlet{body}{black!80!white}
 \colorlet{name}{heading}
 \colorlet{tagline}{accent}
-%*
-
 
 \newcommand{\cvLocationMarker}{\faMapMarker}
-
-\RequirePackage{tikz}
-\RequirePackage[skins]{tcolorbox}
-\RequirePackage[inline]{enumitem}
-
 \setlength{\parindent}{0pt}
 
 \newcommand{\utffriendlydetokenize}[1]{%
@@ -53,29 +31,18 @@
 
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{m m o}{%
-    \IfNoValueTF{#3}{%
-        \mbox{
+    \mbox{
         \textcolor{accent}%
-            {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-            ~\utffriendlydetokenize{#2}\hspace{2em}
-        }%
-    }{%
-        \mbox{\textcolor{accent}%
         {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-        ~\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
+        ~\utffriendlydetokenize{#2}\hspace{2em}
     }%
 }%
-
-
-\NewDocumentCommand{\NewInfoField}{s m m o}{%
-    \IfBooleanF{#1}{
-        \IfNoValueF{#4}{\csdef{#2 hyperprefix}{#4}}%
-    }
+\NewDocumentCommand{\NewInfoField}{s m m o}{
     \csdef{#2 symbol}{#3}%
     \IfBooleanTF{#1}
     { \csdef{#2}##1##2{%
             \printinfo{\csuse{#2 symbol}}{##1}%
-        }%
+        }
     }
     { \csdef{#2}##1{%
             \printinfo{\csuse{#2 symbol}}{##1}%
@@ -94,8 +61,6 @@
 \NewInfoField{twitter}{\faTwitter}[https://twitter.com/]
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
 \NewInfoField{github}{\faGithub}[https://github.com/]
-
-\NewInfoField{orcid}{\faOrcid}[https://orcid.org/]
 \NewInfoField{location}{\cvLocationMarker}
 
 
@@ -105,17 +70,10 @@
 
 \newcommand{\@makeaphoto}[2]{%
     \begin{minipage}{#1}%
-        \if@normalphoto
-        \setlength{\fboxsep}{0pt}%
-        \setlength{\fboxrule}{1pt}%
-        \fbox{\includegraphics[width=0.94\linewidth]{#2}}
-        \else
-        % \tikz\path[fill overzoom image={#2}]circle[radius=0.5\linewidth];
         \begin{tikzpicture}
             \node[circle,draw, very thick, color=black, minimum size=0.94\linewidth, 
             fill overzoom image=#2]{};
         \end{tikzpicture}
-        \fi%
     \end{minipage}%
 }
 

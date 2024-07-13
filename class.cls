@@ -20,6 +20,7 @@
 \colorlet{name}{heading}
 \colorlet{tagline}{accent}
 
+%* Header
 \newcommand{\cvLocationMarker}{\faMapMarker}
 \setlength{\parindent}{0pt}
 
@@ -107,3 +108,4 @@
         \class@photos\par%
     \endgroup\medskip
 }
+%*

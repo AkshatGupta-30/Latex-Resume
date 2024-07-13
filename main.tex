@@ -1,21 +1,16 @@
-\documentclass{article}
-\usepackage[margin=1.2cm]{geometry}
-\usepackage{graphicx}
+\documentclass[10pt,a4paper,ragged2e,withhyper]{class}
+\geometry{margin=1cm,columnsep=1.2cm}
+
+\setmainfont{Roboto Slab}
+\setsansfont{Lato}
+\renewcommand{\familydefault}{\sfdefault}
+
 
 \input{fonts}
-\input{environments}
+\input{components/header.tex}
 
 \begin{document}
 
-\begin{heading}
-    \begin{minipage}[t]{0.1\textwidth}
-        \rubik{\fontsize{30}{22}\selectfont \textbf{Akshat Gupta}}\\
-    \end{minipage}%
-    \hfill
-    \begin{minipage}[t]{0.1\textwidth}
-        Photograph
-        \includegraphics[width=\textwidth]{assets/Photograph.jpg}
-    \end{minipage}
-\end{heading}
+\makecvheader{}
 
 \end{document}

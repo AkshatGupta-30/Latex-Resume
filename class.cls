@@ -10,6 +10,8 @@
 \RequirePackage[skins]{tcolorbox}
 \usepackage{pifont}
 \RequirePackage[inline]{enumitem}
+\RequirePackage{xcolor}
+\usepackage{hyperref}
 
 \input{fonts}
 
@@ -159,4 +161,9 @@
     \textbf{#2} \\
     \small{#3} \\
     \normalsize{#4}
+}
+
+\newcommand{\certificate}[3]{
+    #1\hspace{1.5mm}-\hspace{1.5mm}#2\hspace{2mm}\href{#3}{\textcolor{blue}{[Link]}}\\
+    \vspace{-\baselineskip}
 }

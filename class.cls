@@ -153,3 +153,10 @@
     \hfill
     \skilllist{3cm}{#2}
 }
+
+\newcommand{\education}[4]{
+    \textbf{\large {#1}} \\
+    \textbf{#2} \\
+    \small{#3} \\
+    \normalsize{#4}
+}

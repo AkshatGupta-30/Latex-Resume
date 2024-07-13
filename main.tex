@@ -1,5 +1,8 @@
 \documentclass[10pt,a4paper,ragged2e,withhyper]{class}
-\geometry{margin=1cm,columnsep=1.2cm}
+\geometry{margin=1cm,columnsep=0.6cm}
+
+\usepackage{paracol}
+\usepackage{multicol}
 
 \setmainfont{Roboto Slab}
 \setsansfont{Lato}
@@ -8,7 +11,20 @@
 \input{components/header.tex}
 
 \begin{document}
+\columnratio{0.3}
 
 \makecvheader{}
+
+\begin{paracol}{2}
+    \sectionheading{Strenghs}
+    \sectionheading{Skills}
+    \sectionheading{Education}
+    \sectionheading{Certificates}
+
+    \switchcolumn{}
+
+    \sectionheading{About Me}
+    \sectionheading{Projects}
+\end{paracol}
 
 \end{document}

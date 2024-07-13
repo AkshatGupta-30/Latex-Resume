@@ -118,3 +118,10 @@
     \endgroup\medskip
 }
 %*
+
+\newcommand{\sectionheading}[2][]{%
+    \nointerlineskip\bigskip%  %% bugfix in v1.6.2
+    \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+    {\color{heading}\fontsize{20}{60}\selectfont\bfseries\josefinsans{#2}}\\[-1ex]%
+    {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+}

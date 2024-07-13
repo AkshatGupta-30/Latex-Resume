@@ -167,3 +167,7 @@
     #1\hspace{1.5mm}-\hspace{1.5mm}#2\hspace{2mm}\href{#3}{\textcolor{blue}{[Link]}}\\
     \vspace{-\baselineskip}
 }
+
+\newcommand{\aboutme}[1]{
+    #1
+}

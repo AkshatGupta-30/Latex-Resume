@@ -46,40 +46,40 @@
 
 \newcommand{\utffriendlydetokenize}[1]{%
 \scantokens{%
-  \catcode`\_=12%
-  {#1}%
+    \catcode`\_=12%
+    {#1}%
 }%
 }
 
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{m m o}{%
-  \IfNoValueTF{#3}{%
-    \mbox{
-      \textcolor{accent}%
+    \IfNoValueTF{#3}{%
+        \mbox{
+        \textcolor{accent}%
+            {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
+            ~\utffriendlydetokenize{#2}\hspace{2em}
+        }%
+    }{%
+        \mbox{\textcolor{accent}%
         {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-        ~\utffriendlydetokenize{#2}\hspace{2em}
-      }%
-  }{%
-      \mbox{\textcolor{accent}%
-      {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-      ~\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
-  }%
+        ~\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
+    }%
 }%
 
 
 \NewDocumentCommand{\NewInfoField}{s m m o}{%
-  \IfBooleanF{#1}{
-    \IfNoValueF{#4}{\csdef{#2 hyperprefix}{#4}}%
-  }
-  \csdef{#2 symbol}{#3}%
-  \IfBooleanTF{#1}
+    \IfBooleanF{#1}{
+        \IfNoValueF{#4}{\csdef{#2 hyperprefix}{#4}}%
+    }
+    \csdef{#2 symbol}{#3}%
+    \IfBooleanTF{#1}
     { \csdef{#2}##1##2{%
-          \printinfo{\csuse{#2 symbol}}{##1}%
-      }%
+            \printinfo{\csuse{#2 symbol}}{##1}%
+        }%
     }
     { \csdef{#2}##1{%
-          \printinfo{\csuse{#2 symbol}}{##1}%
-      }%
+            \printinfo{\csuse{#2 symbol}}{##1}%
+        }%
     }
 }
 \ExplSyntaxOff
@@ -100,66 +100,51 @@
 
 
 \newlength{\class@photos@width}
-\newlength{\class@photo@diam@left}
-\newlength{\class@photo@diam@right}
-\def\class@left@photos{}
-\def\class@right@photos{}
+\newlength{\class@photo@diam}
+\def\class@photos{}
 
 \newcommand{\@makeaphoto}[2]{%
-  \begin{minipage}{#1}%
-    \if@normalphoto
-      \setlength{\fboxsep}{0pt}%
-      \setlength{\fboxrule}{1pt}%
-      \fbox{\includegraphics[width=0.94\linewidth]{#2}}
-    \else
-      % \tikz\path[fill overzoom image={#2}]circle[radius=0.5\linewidth];
-      \begin{tikzpicture}
-        \node[circle,draw, very thick, color=black, minimum size=0.94\linewidth, 
-          fill overzoom image=#2]{};
-      \end{tikzpicture}
-    \fi%
-  \end{minipage}%
+    \begin{minipage}{#1}%
+        \if@normalphoto
+        \setlength{\fboxsep}{0pt}%
+        \setlength{\fboxrule}{1pt}%
+        \fbox{\includegraphics[width=0.94\linewidth]{#2}}
+        \else
+        % \tikz\path[fill overzoom image={#2}]circle[radius=0.5\linewidth];
+        \begin{tikzpicture}
+            \node[circle,draw, very thick, color=black, minimum size=0.94\linewidth, 
+            fill overzoom image=#2]{};
+        \end{tikzpicture}
+        \fi%
+    \end{minipage}%
 }
 
-\newcommand{\class@add@photo@left}[1]{%
-  \appto{\class@left@photos}{%
-    \@makeaphoto{\class@photo@diam@left}{#1}\hspace{1ex}%
-  }%
-  \addtolength{\class@photos@width}{\class@photo@diam@left}%
-  \addtolength{\class@photos@width}{1ex}%
+\newcommand{\class@add@photo}[1]{%
+    \appto{\class@photos}{%
+        \@makeaphoto{\class@photo@diam}{#1}\hspace{1ex}%
+    }%
+    \addtolength{\class@photos@width}{\class@photo@diam}%
+    \addtolength{\class@photos@width}{1ex}%
 }
-\newcommand{\class@add@photo@right}[1]{%
-  \appto{\class@right@photos}{%
-    \@makeaphoto{\class@photo@diam@right}{#1}\hspace{1ex}%
-  }%
-  \addtolength{\class@photos@width}{\class@photo@diam@right}%
-  \addtolength{\class@photos@width}{1ex}%
+\newcommand{\photo}[2]{%
+    \setlength{\class@photo@diam}{#1}%
+    \forcsvlist{\class@add@photo}{#2}%
 }
-\newcommand{\photoL}[2]{%
-  \setlength{\class@photo@diam@left}{#1}%
-  \forcsvlist{\class@add@photo@left}{#2}%
-}
-\newcommand{\photoR}[2]{%
-  \setlength{\class@photo@diam@right}{#1}%
-  \forcsvlist{\class@add@photo@right}{#2}%
-}
-\let\photo\photoR
 
 \newcommand{\namefont}{\Huge\bfseries}
 % \newcommand{\taglinefont}{\large\bfseries}
 \newcommand{\personalinfofont}{\small}
 
 \newcommand{\makecvheader}{%
-  \begingroup
-    \class@left@photos\hfill%
-    \begin{minipage}{\dimexpr\linewidth-\class@photos@width}%
-    \raggedright%
-    {\namefont\color{name}\MakeUppercase{\@name}\par}
-    \medskip
-    % {\taglinefont\color{tagline}\@tagline\par}
-    % \medskip
-    {\personalinfofont\@personalinfo\par}
-    \end{minipage}\hfill%
-    \class@right@photos\par%
-  \endgroup\medskip
+    \begingroup
+        \begin{minipage}{\dimexpr\linewidth-\class@photos@width}%
+        \raggedright%
+        {\namefont\color{name}\MakeUppercase{\@name}\par}
+        \medskip
+        % {\taglinefont\color{tagline}\@tagline\par}
+        % \medskip
+        {\personalinfofont\@personalinfo\par}
+        \end{minipage}\hfill%
+        \class@photos\par%
+    \endgroup\medskip
 }

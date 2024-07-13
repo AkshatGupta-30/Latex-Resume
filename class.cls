@@ -9,6 +9,7 @@
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
 
+\input{fonts}
 
 \colorlet{accent}{black}
 \colorlet{emphasis}{black}
@@ -89,9 +90,9 @@
     \forcsvlist{\class@add@photo}{#2}%
 }
 
-\newcommand{\namefont}{\Huge\bfseries}
+\newcommand{\namefont}{\Huge\bfseries\rubik}
 % \newcommand{\taglinefont}{\large\bfseries}
-\newcommand{\personalinfofont}{\small}
+\newcommand{\personalinfofont}{\small\robotoslab}
 
 \newcommand{\makecvheader}{%
     \begingroup

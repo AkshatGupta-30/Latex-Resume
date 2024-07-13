@@ -27,6 +27,15 @@
 \newcommand{\utffriendlydetokenize}[1]{%
 \scantokens{%
     \catcode`\_=12%
+    \catcode`\^=12%
+    \catcode`\_=12%
+    \catcode`\:=12%
+    \catcode`\-=12%
+    \catcode`\&=12%
+    \catcode`\$=12%
+    \catcode`\#=12%
+    \catcode`\~=12%
+    \catcode`\\=12%
     {#1}%
 }%
 }
@@ -91,7 +100,7 @@
     \forcsvlist{\class@add@photo}{#2}%
 }
 
-\newcommand{\namefont}{\Huge\bfseries\rubik}
+\newcommand{\namefont}{\fontsize{35}{60}\selectfont\bfseries\rubik}
 % \newcommand{\taglinefont}{\large\bfseries}
 \newcommand{\personalinfofont}{\small\robotoslab}
 

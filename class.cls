@@ -187,3 +187,10 @@
         #4
     }
 }
+
+\newcommand{\projectongoing}[3]{
+    \item[\raisebox{0.25\height}{\large{\ding{228}}}] {
+        {\fontsize{15}{60}\selectfont{\textbf{#1}}} \hspace{1mm} \textit{\large{(#2)}} \hfill [Ongoing]
+        #3
+    }
+}

@@ -158,9 +158,9 @@
 }
 
 \newcommand{\education}[4]{
-    \textbf{\large {#1}} \\
-    \textbf{#2} \\
-    \small{#3} \\
+    \textbf{\fontsize{11}{60}\selectfont{#1}} \\
+    \textbf{\fontsize{9}{60}\selectfont{#2}} \\
+    \fontsize{8}{60}\selectfont{#3} \\
     \normalsize{#4}
 }
 

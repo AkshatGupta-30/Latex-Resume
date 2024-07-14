@@ -171,3 +171,8 @@
 \newcommand{\aboutme}[1]{
     #1
 }
+
+\newcommand{\project}[4]{
+    {\fontsize{15}{60}\selectfont{\textbf{#1}}}\hspace{1mm} \textit{\large{(#3)}} \hfill{\href{#2}{\textcolor{blue}{[Link]}}}
+    #4
+}

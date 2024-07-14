@@ -172,6 +172,15 @@
     #1
 }
 
+\newcommand{\experience}[6]{
+    \item[\ding{42}] {
+        {\fontsize{14}{60}\selectfont{\textbf{#1}}}\\
+        {\fontsize{12}{60}\selectfont{#2}}\\
+        {\fontsize{9}{60}\selectfont{\faIcon[regular]{calendar} #3 \- #4 \hfill{\faMapMarker #5}}}
+        #6
+    }
+}
+
 \newcommand{\project}[4]{
     {\fontsize{15}{60}\selectfont{\textbf{#1}}}\hspace{1mm} \textit{\large{(#3)}} \hfill{\href{#2}{\textcolor{blue}{[Link]}}}
     #4

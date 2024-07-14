@@ -177,20 +177,25 @@
         {\fontsize{14}{60}\selectfont{\textbf{#1}}}\\
         {\fontsize{12}{60}\selectfont{#2}}\\
         {\fontsize{9}{60}\selectfont{\faIcon[regular]{calendar} #3 \- #4 \hfill{\faMapMarker #5}}}
+        \vspace{1mm}
         #6
     }
 }
 
 \newcommand{\project}[4]{
     \item[\raisebox{0.25\height}{\large{\ding{228}}}] {
-        {\fontsize{15}{60}\selectfont{\textbf{#1}}}\hspace{1mm} \textit{\large{(#3)}} \hfill{\href{#2}{\textcolor{blue}{[Link]}}}
+        {\fontsize{15}{60}\selectfont{\textbf{#1}}}\hspace{0.75mm} \textit{\fontsize{11}{60}\selectfont{(#3)}} \hfill{\href{#2}{\textcolor{blue}{[Link]}}}
+        \vspace{1mm}
         #4
+        \vspace{1mm}
     }
 }
 
 \newcommand{\projectongoing}[3]{
     \item[\raisebox{0.25\height}{\large{\ding{228}}}] {
-        {\fontsize{15}{60}\selectfont{\textbf{#1}}} \hspace{1mm} \textit{\large{(#2)}} \hfill [Ongoing]
+        {\fontsize{15}{60}\selectfont{\textbf{#1}}} \hspace{0.75mm} \textit{\fontsize{11}{60}\selectfont{(#2)}} \hfill [Ongoing]
+        \vspace{1mm}
         #3
+        \vspace{1mm}
     }
 }

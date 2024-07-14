@@ -135,9 +135,17 @@
 
 \newcommand{\strengthlist}[1]{
     \begin{itemize}
-        \makeatletter
-        \@for\strength:=#1\do{\item[\ding{70}] \strength}
-        \makeatother
+        \foreach \x in {#1} {
+            \item[\ding{70}] \x
+        }
+    \end{itemize}
+}
+
+\newcommand{\achievementlist}[1]{
+    \begin{itemize}
+        \foreach \x in {#1} {
+            \item[\ding{80}] \x
+        }
     \end{itemize}
 }
 
@@ -162,6 +170,7 @@
     \textbf{\fontsize{9}{60}\selectfont{#2}} \\
     \fontsize{8}{60}\selectfont{#3} \\
     \normalsize{#4}
+    \vspace{1mm}
 }
 
 \newcommand{\certificate}[3]{

@@ -51,6 +51,7 @@
         {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
         ~\utffriendlydetokenize{#2}\hspace{2em}
     }%
+    \vspace{0.2mm}
 }%
 \NewDocumentCommand{\NewInfoField}{s m m o}{
     \csdef{#2 symbol}{#3}%
